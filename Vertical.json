@@ -1,0 +1,23 @@
+{
+    "Output": "VerticalOutput.dat",
+    "R" : 0.5,
+    "L1" : 0.05,
+    "L2" : 0.05,
+    "H" : 0.05,
+    "Ct" : 0.5,
+    "Cdv" : 0.47,
+    "Cd" : 1.2,
+    "St" : "4*pi*R**2",
+    "Sv" : "pi*R**2",
+    "rho" : 1000,
+    "Ma" : "0.25*pi*rho*H**2",
+    "Mv" : "500.0*Ma*(L1+L2)",
+    "Iv" : "(2.0/3.0)*Mv*R**2",
+    "theta1": "sin(t)",
+    "theta2": "0",
+    "xvelocity": 0.0,
+    "yvelocity": 1.0,
+    "phi": -1.57,
+    "endtime": "1000*pi",
+    "timepoints": 1000
+}
