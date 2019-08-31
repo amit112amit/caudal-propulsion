@@ -1,5 +1,5 @@
 {
-    "Output": "HorizontalOutput.dat",
+    "Output": "SimpleOutput.dat",
     "R" : 0.5,
     "L1" : 0.05,
     "L2" : 0.05,
@@ -13,11 +13,11 @@
     "Ma" : "0.25*pi*rho*H**2",
     "Mv" : "500.0*Ma*(L1+L2)",
     "Iv" : "(2.0/3.0)*Mv*R**2",
-    "theta1": "sin(t)",
+    "theta1": "0.5 + sin(t)",
     "theta2": "0",
-    "xvelocity": 0.001,
+    "xvelocity": 0.0001,
     "yvelocity": 0.0,
-    "phi": -3.141592653589793,
-    "endtime": "pi",
-    "timepoints": 1000
+    "phi": -3.1412,
+    "endtime": "10*pi",
+    "timepoints": 10000
 }

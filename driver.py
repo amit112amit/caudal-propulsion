@@ -4,9 +4,10 @@ from functools import partial
 
 import matplotlib.pyplot as plt
 import numba
+import pandas
 from assimulo.problem import Implicit_Problem
 from assimulo.solvers import IDA
-from numpy import array, concatenate, cos, isnan, pi, savetxt, sin, zeros
+from numpy import array, concatenate, cos, isnan, pi, savetxt, sin, zeros, squeeze
 
 from jacobian import jacobian
 from makethetafunction import maketheta
@@ -98,14 +99,15 @@ N = params['timepoints']
 t_sol, y_sol, yd_sol = imp_sim.simulate(endtime, N)
 
 t = array(t_sol)
-t = t.reshape((N + 1, 1))
 
 # Save results
-yd = yd_sol[:, 3:6]
 outputfile = params['Output']  # Output file name
-outArray = concatenate((t, y_sol, yd_sol[:, 3:6]), axis=1)
-savetxt(outputfile, outArray, fmt='%20.16f', delimiter=',')
-
+data = {'t': t, 'x': y_sol[:, 0].squeeze(), 'y': y_sol[:, 1].squeeze(),
+        'p' : y_sol[:, 2].squeeze(), 'xp': y_sol[:, 3].squeeze(),
+        'yp': y_sol[:, 4].squeeze(), 'pp': y_sol[:, 5].squeeze(),
+        'xpp': yd_sol[:, 3].squeeze(), 'ypp': y_sol[:, 4].squeeze(),
+        'ppp': y_sol[:, 5].squeeze()}
+dataframe = pandas.DataFrame(data).to_csv(outputfile, index=False)
 # Extract position from solution
 x_p = y_sol[:, 0]
 y_p = y_sol[:, 1]
